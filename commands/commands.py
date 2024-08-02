@@ -26,7 +26,7 @@ def add():
         "editorial": editorial,
         "genre": genre,
         "location": location,
-        "copies": copies,
+        "copies": copies
     }
 
     books = json_manager.read_json()

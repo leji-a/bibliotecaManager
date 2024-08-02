@@ -22,7 +22,7 @@ Sigue estos pasos para instalar el proyecto:
     ```
 3. Instala las dependencias:
     ```bash
-    pip install -r requirements.txt
+    pip install -r dependencies/requirements.txt
     ```
 
 ## Uso
