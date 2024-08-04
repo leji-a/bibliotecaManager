@@ -1,6 +1,6 @@
 import click
 import json_manager
-from utils import print_format
+from commands.utils import print_format
 
 
 @click.command()
