@@ -1,6 +1,6 @@
 # Administrador de Biblioteca
 
-Este es un programa simple para administrar una biblioteca. Permite añadir, buscar, mostrar y eliminar libros.
+Este es un programa simple para administrar una biblioteca. Permite añadir, modificar, mostrar y eliminar libros.
 
 ## Tabla de Contenidos
 - [Instalación](#instalación)
@@ -37,7 +37,7 @@ python main.py
 Aquí hay una lista de comandos útiles para trabajar con el proyecto:
 
 - `python main.py add`: Añade un libro.
-- `python main.py find <keyword>`: Busca un libro por título o autor.
+- `python main.py modify <title>`: Modifica un libro por título.
 - `python main.py display`: Muestra todos los libros.
 - `python main.py delete <title>`: Borra un libro por título.
 
