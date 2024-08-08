@@ -1,16 +1,16 @@
 import click
-from commands.commands import add, find, display, delete
+from commands.commands import *
+
 
 @click.group()
 def main():
     "--- Administrador simple de una biblioteca ---"
     pass
 
+commands = [add, display, modify, delete]
+for command in commands:
+    main.add_command(command)
 
-main.add_command(add)
-main.add_command(find)
-main.add_command(display)
-main.add_command(delete)
 
 if __name__ == "__main__":
     main()

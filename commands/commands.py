@@ -1,5 +1,5 @@
 import click
-import json_manager
+import commands.json_manager as json_manager
 from commands.utils import print_format
 
 
@@ -26,7 +26,7 @@ def add():
         "editorial": editorial,
         "genre": genre,
         "location": location,
-        "copies": copies
+        "copies": copies,
     }
 
     books = json_manager.read_json()
@@ -34,14 +34,6 @@ def add():
     json_manager.write_json(books)
 
 
-@click.command()
-@click.argument("keyword")
-def find(keyword):
-    '--- Busqueda de libro por "titulo" o "autor" ---'
-    books = json_manager.read_json()
-    for book in books:
-        if keyword in book["title"] or keyword in book["author"]:
-            print_format(book)
 
 
 @click.command()
@@ -63,3 +55,33 @@ def delete(title):
     else:
         click.echo(f'Book titled "{title}" deleted.')
         json_manager.write_json(new_books)
+
+
+@click.command()
+@click.argument("title")
+def modify(title):
+    '--- Modifica un libro por "titulo" ---'
+    books = json_manager.read_json()
+    for book in books:
+        if book["title"] == title:
+            new_title = input("Nuevo título del libro > ")
+            new_author = input("Nuevo autor del libro > ")
+            new_editorial = input("Nueva editorial del libro > ")
+            new_genre = input("Nuevo género del libro > ")
+            new_location = input("Nueva ubicación en la biblioteca > ")
+            while True:
+                try:
+                    new_copies = int(input("Nuevas copias disponibles > "))
+                    break
+                except ValueError:
+                    print("El número de copias debe ser un número entero. Intenta de nuevo.")
+            updated_book = {
+                "title": new_title,
+                "author": new_author,
+                "editorial": new_editorial,
+                "genre": new_genre,
+                "location": new_location,
+                "copies": new_copies,
+            }
+            updated_books = [updated_book if b["title"] == title else b for b in books]
+            json_manager.write_json(updated_books)
